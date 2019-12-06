@@ -35,15 +35,13 @@ public class Knight : Piece
             //  i < 3 || i > 5 ? 1 : 2: go out two if in the middle, one otherwise
             if (tileX + i / 4 + i / 2 - 2 < 0 
                 || tileX + i / 4 + i / 2 - 2 >= letters.Length
-                || tileY + ((i % 2) * 2 - 1) * (i < 3 || i > 5 ? 1 : 2) < 0
+                || tileY + ((i % 2) * 2 - 1) * (i < 3 || i > 5 ? 1 : 2) <= 0
                 || tileY + ((i % 2) * 2 - 1) * (i < 3 || i > 5 ? 1 : 2) >= 8)
             {
                 continue;
             }
-
-            tileName = letters[tileX + i/4 + i / 2 - 2] + (tileY + ((i%2)*2-1)*(i < 3 || i > 5 ? 1 : 2));
+            tileName = letters[tileX + i/4 + i / 2 - 2] + (tileY + ((i%2)*2-1)*(i < 2 || i > 5 ? 1 : 2));
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
         }
 

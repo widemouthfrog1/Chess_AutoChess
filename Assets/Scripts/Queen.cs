@@ -23,7 +23,6 @@ public class Queen : Piece
         {
             tileName = letters[tileX] + (tileY + i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -31,12 +30,12 @@ public class Queen : Piece
             }
         }
         //down
-        for (int i = 1; tileY - i >= 0; i++)
+        for (int i = 1; tileY - i >= 1; i++)
         {
             tileName = letters[tileX] + (tileY - i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
+
             if (tile.gameObject.transform.childCount == 1)
             {
                 break;
@@ -47,7 +46,6 @@ public class Queen : Piece
         {
             tileName = letters[tileX - i] + tileY;
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -59,7 +57,6 @@ public class Queen : Piece
         {
             tileName = letters[tileX + i] + tileY;
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -67,11 +64,10 @@ public class Queen : Piece
             }
         }
         //up-right
-        for (int i = 1; tileY + i < 8 && tileX + i <= 8; i++)
+        for (int i = 1; tileY + i <= 8 && tileX + i < 8; i++)
         {
             tileName = letters[tileX + i] + (tileY + i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -79,11 +75,10 @@ public class Queen : Piece
             }
         }
         //up-left
-        for (int i = 1; tileY + i < 8 && tileX - i > 0; i++)
+        for (int i = 1; tileY + i <= 8 && tileX - i >= 0; i++)
         {
             tileName = letters[tileX - i] + (tileY + i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -91,11 +86,10 @@ public class Queen : Piece
             }
         }
         //down-right
-        for (int i = 1; tileY - i < 0 && tileX + i >= 8; i++)
+        for (int i = 1; tileY - i > 0 && tileX + i < 8; i++)
         {
             tileName = letters[tileX + i] + (tileY - i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -103,11 +97,10 @@ public class Queen : Piece
             }
         }
         //down-left
-        for (int i = 1; tileY - i < 0 && tileX + i < 0; i++)
+        for (int i = 1; tileY - i > 0 && tileX - i >= 0; i++)
         {
-            tileName = letters[tileX + i] + (tileY - i);
+            tileName = letters[tileX - i] + (tileY - i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {

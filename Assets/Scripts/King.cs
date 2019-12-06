@@ -20,14 +20,14 @@ public class King : Piece
         string tileName;
 
         //up
-        if (tileY + 1 < 8)
+        if (tileY + 1 <= 8)
         {
             tileName = letters[tileX] + (tileY + 1);
             territory.Add(tileName);
             tile = board.GetTile(tileName);
         }
         //down
-        if (tileY - 1 >= 0)
+        if (tileY - 1 > 0)
         {
             tileName = letters[tileX] + (tileY - 1);
             territory.Add(tileName);
@@ -48,28 +48,28 @@ public class King : Piece
             tile = board.GetTile(tileName);
         }
         //up-right
-        if (tileX + 1 < 8 && tileY + 1 < 8)
+        if (tileX + 1 < 8 && tileY + 1 <= 8)
         {
             tileName = letters[tileX + 1] + (tileY + 1);
             territory.Add(tileName);
             tile = board.GetTile(tileName);
         }
         //up-left
-        if (tileX - 1 >= 0 && tileY + 1 < 8)
+        if (tileX - 1 >= 0 && tileY + 1 <= 8)
         {
             tileName = letters[tileX - 1] + (tileY + 1);
             territory.Add(tileName);
             tile = board.GetTile(tileName);
         }
         //down-right
-        if (tileX + 1 < 8 && tileY - 1 >= 0)
+        if (tileX + 1 < 8 && tileY - 1 > 0)
         {
             tileName = letters[tileX + 1] + (tileY - 1);
             territory.Add(tileName);
             tile = board.GetTile(tileName);
         }
         //down-left
-        if (tileX - 1 >= 0 && tileY - 1 >= 0)
+        if (tileX - 1 >= 0 && tileY - 1 > 0)
         {
             tileName = letters[tileX - 1] + (tileY - 1);
             territory.Add(tileName);

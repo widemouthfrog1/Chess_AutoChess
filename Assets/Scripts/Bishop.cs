@@ -19,11 +19,10 @@ public class Bishop : Piece
         Tile tile;
         string tileName;
         //up-right
-        for (int i = 1; tileY + i < 8 && tileX + i <= 8; i++)
+        for (int i = 1; tileY + i <= 8 && tileX + i < 8; i++)
         {
             tileName = letters[tileX + i] + (tileY + i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -31,11 +30,10 @@ public class Bishop : Piece
             }
         }
         //up-left
-        for (int i = 1; tileY + i < 8 && tileX - i > 0; i++)
+        for (int i = 1; tileY + i <= 8 && tileX - i >= 0; i++)
         {
             tileName = letters[tileX - i] + (tileY + i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -43,11 +41,10 @@ public class Bishop : Piece
             }
         }
         //down-right
-        for (int i = 1; tileY - i < 0 && tileX + i >= 8; i++)
+        for (int i = 1; tileY - i > 0 && tileX + i < 8; i++)
         {
             tileName = letters[tileX + i] + (tileY - i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -55,11 +52,10 @@ public class Bishop : Piece
             }
         }
         //down-left
-        for (int i = 1; tileY - i < 0 && tileX + i < 0; i++)
+        for (int i = 1; tileY - i > 0 && tileX - i >= 0; i++)
         {
-            tileName = letters[tileX + i] + (tileY - i);
+            tileName = letters[tileX - i] + (tileY - i);
             territory.Add(tileName);
-            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
