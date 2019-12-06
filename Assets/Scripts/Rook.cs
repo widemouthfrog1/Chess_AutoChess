@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Rook : Piece
 {
-    public int color;
-    public override int Color()
-    {
-        return color;
-    }
 
     public override string Name()
     {

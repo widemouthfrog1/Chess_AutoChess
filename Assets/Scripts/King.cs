@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class King : Piece
 {
-    public int color;
-    public override int Color()
-    {
-        return color;
-    }
 
     public override string Name()
     {
@@ -92,7 +87,7 @@ public class King : Piece
         for (int i = 0; i < territory.Count; i++)
         {
             tile = board.GetTile(territory[i]);
-            if(Color() == 1) //if this king is white
+            if(color == 1) //if this king is white
             {
                 if (tile.IsBlackTerritory())
                 {
@@ -108,7 +103,7 @@ public class King : Piece
             }
             foreach (Transform piece in tile.gameObject.transform)
             {
-                if (piece.gameObject.GetComponent<Piece>().Color() != Color())
+                if (piece.gameObject.GetComponent<Piece>().color != color)
                 {
                     validMoves.Add(territory[i]);
                 }

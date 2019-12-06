@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Pawn : Piece
 {
-    public int color;
-    public override int Color()
-    {
-        return color;
-    }
-
     public override string Name()
     {
         return "Pawn";
@@ -21,14 +15,14 @@ public class Pawn : Piece
         string tilePosition = transform.parent.gameObject.name;
         int leftIndex = IndexOf(tilePosition[0]) - 1;
         int rightIndex = IndexOf(tilePosition[0]) + 1;
-        int topIndex = int.Parse("" + tilePosition[1]) + 1;
+        int topIndex = int.Parse("" + tilePosition[1]) + (color*2 - 1);
         //no need to check top index as a pawn should always be between rows 2 and 7 on a chess board
-        if(leftIndex > 0)
+        if(leftIndex >= 0)
         {
             territory.Add(letters[leftIndex] + topIndex);
         }
         //TODO: refactor to use general bounds instead of 7
-        if(rightIndex > 7)
+        if(rightIndex < 7)
         {
             territory.Add(letters[rightIndex] + topIndex);
         }
@@ -48,7 +42,7 @@ public class Pawn : Piece
             tile = board.GetTile(territory[i]);
             foreach(Transform piece in tile.gameObject.transform)
             {
-                if(piece.gameObject.GetComponent<Piece>().Color() != Color())
+                if(piece.gameObject.GetComponent<Piece>().color != color)
                 {
                     validMoves.Add(territory[i]);
                 }

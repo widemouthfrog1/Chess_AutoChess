@@ -95,6 +95,14 @@ public class Board : MonoBehaviour
                     Pawn pawn = p.GetComponent<Pawn>();
                     pawn.transform.parent = o.transform;
                     pawn.SetBoard(GetComponent<Board>());
+                    if (y > 3)
+                    {
+                        pawn.color = 0;
+                    }
+                    else
+                    {
+                        pawn.color = 1;
+                    }
                     piecesOnBoard.Add(pawn);
                 }
                 else
@@ -120,6 +128,14 @@ public class Board : MonoBehaviour
                         Rook rook = ro.GetComponent<Rook>();
                         rook.transform.parent = o.transform;
                         rook.SetBoard(GetComponent<Board>());
+                        if (y > 3)
+                        {
+                            rook.color = 0;
+                        }
+                        else
+                        {
+                            rook.color = 1;
+                        }
                         piecesOnBoard.Add(rook);
                     }
                     if ((x == 1 || x == 6) && (y == 0 || y == 7))
@@ -143,6 +159,14 @@ public class Board : MonoBehaviour
                         Knight knight = kn.GetComponent<Knight>();
                         knight.transform.parent = o.transform;
                         knight.SetBoard(GetComponent<Board>());
+                        if (y > 3)
+                        {
+                            knight.color = 0;
+                        }
+                        else
+                        {
+                            knight.color = 1;
+                        }
                         piecesOnBoard.Add(knight);
                     }
                     if ((x == 2 || x == 5) && (y == 0 || y == 7))
@@ -166,6 +190,14 @@ public class Board : MonoBehaviour
                         Bishop bishop = b.GetComponent<Bishop>();
                         bishop.transform.parent = o.transform;
                         bishop.SetBoard(GetComponent<Board>());
+                        if (y > 3)
+                        {
+                            bishop.color = 0;
+                        }
+                        else
+                        {
+                            bishop.color = 1;
+                        }
                         piecesOnBoard.Add(bishop);
                     }
                     if ((x == 3) && (y == 0 || y == 7))
@@ -189,6 +221,14 @@ public class Board : MonoBehaviour
                         Queen queen = q.GetComponent<Queen>();
                         queen.transform.parent = o.transform;
                         queen.SetBoard(GetComponent<Board>());
+                        if (y > 3)
+                        {
+                            queen.color = 0;
+                        }
+                        else
+                        {
+                            queen.color = 1;
+                        }
                         piecesOnBoard.Add(queen);
                     }
                     if ((x == 4) && (y == 0 || y == 7))
@@ -212,6 +252,14 @@ public class Board : MonoBehaviour
                         King king = k.GetComponent<King>();
                         king.transform.parent = o.transform;
                         king.SetBoard(GetComponent<Board>());
+                        if (y > 3)
+                        {
+                            king.color = 0;
+                        }
+                        else
+                        {
+                            king.color = 1;
+                        }
                         piecesOnBoard.Add(king);
                     }
                 }
@@ -230,7 +278,7 @@ public class Board : MonoBehaviour
             {
                 Debug.Log(tileName);
                 Tile tile = GetTile(tileName);
-                tile.SetTerritory(piece.Color() == 1); //color equals white
+                tile.SetTerritory(piece.color == 1); //color equals white
             }
         }
     }
