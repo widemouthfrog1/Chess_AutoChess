@@ -43,8 +43,8 @@ public class Board : MonoBehaviour
 
     private string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H" };
     private Tile selectedTile = null;
-    private List<Piece> piecesOnBoard;
-    private List<Piece> takenPieces;
+    private List<Piece> piecesOnBoard = new List<Piece>();
+    private List<Piece> takenPieces = new List<Piece>();
 
     // Start is called before the first frame update
     void Start()
@@ -225,8 +225,10 @@ public class Board : MonoBehaviour
 
         foreach (Piece piece in piecesOnBoard)
         {
+            Debug.Log(piece.Name());
             foreach (string tileName in piece.Territory())
             {
+                Debug.Log(tileName);
                 Tile tile = GetTile(tileName);
                 tile.SetTerritory(piece.Color() == 1); //color equals white
             }
@@ -235,7 +237,8 @@ public class Board : MonoBehaviour
 
     public Tile GetTile(string tileName)
     {
-        return board[IndexOf(tileName[0])][int.Parse("" + tileName[1])].GetComponent<Tile>();
+        Debug.Log(tileName);
+        return board[IndexOf(tileName[0])][int.Parse("" + tileName[1]) - 1].GetComponent<Tile>();
     }
 
     private Tile GetTile(int col, int row)
