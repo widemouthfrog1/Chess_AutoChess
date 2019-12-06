@@ -43,6 +43,8 @@ public class Board : MonoBehaviour
 
     private string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H" };
     private Tile selectedTile = null;
+    private List<Piece> piecesOnBoard;
+    private List<Piece> takenPieces;
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +95,7 @@ public class Board : MonoBehaviour
                     Pawn pawn = p.GetComponent<Pawn>();
                     pawn.transform.parent = o.transform;
                     pawn.SetBoard(GetComponent<Board>());
+                    piecesOnBoard.Add(pawn);
                 }
                 else
                 {
@@ -117,6 +120,7 @@ public class Board : MonoBehaviour
                         Rook rook = ro.GetComponent<Rook>();
                         rook.transform.parent = o.transform;
                         rook.SetBoard(GetComponent<Board>());
+                        piecesOnBoard.Add(rook);
                     }
                     if ((x == 1 || x == 6) && (y == 0 || y == 7))
                     {
@@ -139,6 +143,7 @@ public class Board : MonoBehaviour
                         Knight knight = kn.GetComponent<Knight>();
                         knight.transform.parent = o.transform;
                         knight.SetBoard(GetComponent<Board>());
+                        piecesOnBoard.Add(knight);
                     }
                     if ((x == 2 || x == 5) && (y == 0 || y == 7))
                     {
@@ -161,6 +166,7 @@ public class Board : MonoBehaviour
                         Bishop bishop = b.GetComponent<Bishop>();
                         bishop.transform.parent = o.transform;
                         bishop.SetBoard(GetComponent<Board>());
+                        piecesOnBoard.Add(bishop);
                     }
                     if ((x == 3) && (y == 0 || y == 7))
                     {
@@ -183,6 +189,7 @@ public class Board : MonoBehaviour
                         Queen queen = q.GetComponent<Queen>();
                         queen.transform.parent = o.transform;
                         queen.SetBoard(GetComponent<Board>());
+                        piecesOnBoard.Add(queen);
                     }
                     if ((x == 4) && (y == 0 || y == 7))
                     {
@@ -205,20 +212,35 @@ public class Board : MonoBehaviour
                         King king = k.GetComponent<King>();
                         king.transform.parent = o.transform;
                         king.SetBoard(GetComponent<Board>());
+                        piecesOnBoard.Add(king);
                     }
                 }
             }
         }
         
-        foreach( Transform piece in board[4][1].transform)
+        foreach (Transform piece in board[4][1].transform)
         {
             piece.gameObject.GetComponent<Piece>().Move("E4");
+        }
+
+        foreach (Piece piece in piecesOnBoard)
+        {
+            foreach (string tileName in piece.Territory())
+            {
+                Tile tile = GetTile(tileName);
+                tile.SetTerritory(piece.Color() == 1); //color equals white
+            }
         }
     }
 
     public Tile GetTile(string tileName)
     {
         return board[IndexOf(tileName[0])][int.Parse("" + tileName[1])].GetComponent<Tile>();
+    }
+
+    private Tile GetTile(int col, int row)
+    {
+        return board[col][row].GetComponent<Tile>();
     }
 
     private GameObject GetTileObject(Vector3 mousePosition)

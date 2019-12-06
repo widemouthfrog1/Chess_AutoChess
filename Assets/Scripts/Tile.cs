@@ -8,6 +8,8 @@ public class Tile : MonoBehaviour
     public STATE state;
     private Color color;
     private bool first = true;
+    private bool whiteTerritory;
+    private bool blackTerritory;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +35,33 @@ public class Tile : MonoBehaviour
         {
             r.color = new Color(color.r, color.g, color.b);
         }
+    }
+
+    public void ResetTerritory()
+    {
+        whiteTerritory = false;
+        blackTerritory = false;
+    }
+
+    public void SetTerritory(bool white)
+    {
+        if (white)
+        {
+            whiteTerritory = true;
+        }
+        else
+        {
+            blackTerritory = true;
+        }
+    }
+
+    public bool IsWhiteTerritory()
+    {
+        return whiteTerritory;
+    }
+
+    public bool IsBlackTerritory()
+    {
+        return blackTerritory;
     }
 }

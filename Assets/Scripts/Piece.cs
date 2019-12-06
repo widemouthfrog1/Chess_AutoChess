@@ -9,7 +9,7 @@ public abstract class Piece : MonoBehaviour
     public abstract List<string> Territory();
     public virtual List<string> ValidMoves()
     {
-        //TODO: Absolute Pin, Check For Opposite Coloured Piece (Territory returns tiles with opposite coloured pieces)
+        //TODO: Absolute Pin
         List<string> validMoves = new List<string>();
         List<string> territory = Territory();
         Tile tile;

@@ -62,7 +62,39 @@ public class King : Piece
 
     public override List<string> ValidMoves()
     {
-        throw new System.NotImplementedException();
+        List<string> validMoves = new List<string>();
+        List<string> territory = Territory();
+        Tile tile;
+        for (int i = 0; i < territory.Count; i++)
+        {
+            tile = board.GetTile(territory[i]);
+            if(Color() == 1) //if this king is white
+            {
+                if (tile.IsBlackTerritory())
+                {
+                    continue; //not a valid move so continue
+                }
+            }
+            else
+            {
+                if (tile.IsWhiteTerritory())
+                {
+                    continue;
+                }
+            }
+            foreach (Transform piece in tile.gameObject.transform)
+            {
+                if (piece.gameObject.GetComponent<Piece>().Color() != Color())
+                {
+                    validMoves.Add(territory[i]);
+                }
+            }
+            if (tile.gameObject.transform.childCount == 0)
+            {
+                validMoves.Add(territory[i]);
+            }
+        }
+        return validMoves;
     }
 
     // Start is called before the first frame update
