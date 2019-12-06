@@ -48,6 +48,7 @@ public class Knight : Piece
 
             tileName = letters[tileX + i/4 + i / 2 - 2] + (tileY + ((i%2)*2-1)*(i < 3 || i > 5 ? 1 : 2));
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
         }
 

@@ -218,10 +218,10 @@ public class Board : MonoBehaviour
             }
         }
         
-        foreach (Transform piece in board[4][1].transform)
+        /*foreach (Transform piece in board[4][1].transform)
         {
             piece.gameObject.GetComponent<Piece>().Move("E4");
-        }
+        }*/
 
         foreach (Piece piece in piecesOnBoard)
         {
@@ -237,7 +237,6 @@ public class Board : MonoBehaviour
 
     public Tile GetTile(string tileName)
     {
-        Debug.Log(tileName);
         return board[IndexOf(tileName[0])][int.Parse("" + tileName[1]) - 1].GetComponent<Tile>();
     }
 

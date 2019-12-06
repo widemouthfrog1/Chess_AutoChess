@@ -28,6 +28,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX] + (tileY + i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -39,6 +40,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX] + (tileY - i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -50,6 +52,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX - i] + tileY;
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -61,6 +64,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX + i] + tileY;
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -72,6 +76,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX + i] + (tileY + i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -83,6 +88,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX - i] + (tileY + i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -94,6 +100,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX + i] + (tileY - i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -105,6 +112,7 @@ public class Queen : Piece
         {
             tileName = letters[tileX + i] + (tileY - i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {

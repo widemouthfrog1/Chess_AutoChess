@@ -28,6 +28,7 @@ public class Bishop : Piece
         {
             tileName = letters[tileX + i] + (tileY + i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -39,6 +40,7 @@ public class Bishop : Piece
         {
             tileName = letters[tileX - i] + (tileY + i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -50,6 +52,7 @@ public class Bishop : Piece
         {
             tileName = letters[tileX + i] + (tileY - i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {
@@ -61,6 +64,7 @@ public class Bishop : Piece
         {
             tileName = letters[tileX + i] + (tileY - i);
             territory.Add(tileName);
+            Debug.Log(Name() + " " + tileName);
             tile = board.GetTile(tileName);
             if (tile.gameObject.transform.childCount == 1)
             {

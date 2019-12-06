@@ -25,37 +25,61 @@ public class King : Piece
         string tileName;
 
         //up
-        tileName = letters[tileX] + (tileY + 1);
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileY + 1 < 8)
+        {
+            tileName = letters[tileX] + (tileY + 1);
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
         //down
-        tileName = letters[tileX] + (tileY - 1);
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileY - 1 >= 0)
+        {
+            tileName = letters[tileX] + (tileY - 1);
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
         //left
-        tileName = letters[tileX - 1] + tileY;
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileX - 1 >= 0)
+        {
+            tileName = letters[tileX - 1] + tileY;
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
         //right
-        tileName = letters[tileX + 1] + tileY;
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileX + 1 < 8)
+        {
+            tileName = letters[tileX + 1] + tileY;
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
         //up-right
-        tileName = letters[tileX + 1] + (tileY + 1);
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileX + 1 < 8 && tileY + 1 < 8)
+        {
+            tileName = letters[tileX + 1] + (tileY + 1);
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
         //up-left
-        tileName = letters[tileX - 1] + (tileY + 1);
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileX - 1 >= 0 && tileY + 1 < 8)
+        {
+            tileName = letters[tileX - 1] + (tileY + 1);
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
         //down-right
-        tileName = letters[tileX + 1] + (tileY - 1);
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileX + 1 < 8 && tileY - 1 >= 0)
+        {
+            tileName = letters[tileX + 1] + (tileY - 1);
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
         //down-left
-        tileName = letters[tileX + 1] + (tileY - 1);
-        territory.Add(tileName);
-        tile = board.GetTile(tileName);
+        if (tileX - 1 >= 0 && tileY - 1 >= 0)
+        {
+            tileName = letters[tileX - 1] + (tileY - 1);
+            territory.Add(tileName);
+            tile = board.GetTile(tileName);
+        }
 
         return territory;
     }

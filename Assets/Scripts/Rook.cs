@@ -29,19 +29,18 @@ public class Rook : Piece
             tileName = letters[tileX] + (tileY + i);
             territory.Add(tileName);
             tile = board.GetTile(tileName);
-            Debug.Log(tile.name);
-            Debug.Log("\t" + tileName + " Children: " + tile.gameObject.transform.childCount);
             if (tile.gameObject.transform.childCount == 1)
             {
                 break;
             }
         }
         //down
-        for (int i = 1; tileY - i >= 0; i++)
+        for (int i = 1; tileY - i >= 1; i++)
         {
             tileName = letters[tileX] + (tileY - i);
             territory.Add(tileName);
             tile = board.GetTile(tileName);
+
             if (tile.gameObject.transform.childCount == 1)
             {
                 break;
