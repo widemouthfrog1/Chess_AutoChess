@@ -19,7 +19,7 @@ public class Queen : Piece
         Tile tile;
         string tileName;
         //up
-        for (int i = 1; tileY + i < 8; i++)
+        for (int i = 1; tileY + i <= 8; i++)
         {
             tileName = letters[tileX] + (tileY + i);
             territory.Add(tileName);

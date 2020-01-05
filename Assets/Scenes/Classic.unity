@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106217389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2590185, y: -0.2876063, z: -7.5407143}
+  m_LocalPosition: {x: 5.98, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -278,6 +278,7 @@ MonoBehaviour:
   blackQueen: {fileID: 21300000, guid: 838e59ce9b5f2b248b9d14ceab2441f8, type: 3}
   whiteKing: {fileID: 21300000, guid: b7059c8f46aff304dbd825d94a962ba4, type: 3}
   blackKing: {fileID: 21300000, guid: 24f2d671ef6e0734d9e9b0e9751a4085, type: 3}
+  graveyard: {fileID: 1106217389}
 --- !u!4 &1467912723
 Transform:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class Rook : Piece
         Tile tile;
         string tileName;
         //up
-        for(int i = 1; tileY + i < 8; i++)
+        for(int i = 1; tileY + i <= 8; i++)
         {
             tileName = letters[tileX] + (tileY + i);
             territory.Add(tileName);
@@ -53,7 +53,7 @@ public class Rook : Piece
             }
         }
         //right
-        for (int i = 1; tileX + i < letters.Length; i++)
+        for (int i = 1; tileX + i < 8; i++)
         {
             tileName = letters[tileX + i] + tileY;
             territory.Add(tileName);
@@ -63,6 +63,7 @@ public class Rook : Piece
                 break;
             }
         }
+        
         return territory;
     }
 
