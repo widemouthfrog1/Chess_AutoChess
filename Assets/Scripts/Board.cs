@@ -350,9 +350,11 @@ public class Board : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
-            Tile tile = GetTileObject(mousePosition).GetComponent<Tile>();
-            if (tile != null)
+            GameObject tileObject = GetTileObject(mousePosition);
+            if (tileObject != null)
             {
+                Tile tile = tileObject.GetComponent<Tile>();
+            
                 if (tile.transform.childCount == 1)
                 {
                     SelectTile(tile);
@@ -361,6 +363,10 @@ public class Board : MonoBehaviour
                 {
                     DeselectTile();
                 }
+            }
+            else
+            {
+                DeselectTile();
             }
         }
         if (Input.GetMouseButton(0))
@@ -375,39 +381,54 @@ public class Board : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            Tile tile = GetTileObject(mousePosition).GetComponent<Tile>();
-            if(tile != null && selectedTile != null)
+            GameObject tileObject = GetTileObject(mousePosition);
+            if (tileObject == null)
             {
-                if (!tile.gameObject.name.Equals(selectedTile.gameObject.name))
+                if (selectedTile != null)
                 {
                     foreach (Transform piece in selectedTile.gameObject.transform)
                     {
-                        Piece taken = piece.gameObject.GetComponent<Piece>().Move(tile.gameObject.name);
-                        if(taken != null)
+                        piece.localPosition = new Vector2(0, 0);
+                    }
+                    DeselectTile();
+                }
+            }
+            else
+            {
+                Tile tile = tileObject.GetComponent<Tile>();
+                if (tile != null && selectedTile != null)
+                {
+                    if (!tile.gameObject.name.Equals(selectedTile.gameObject.name))
+                    {
+                        foreach (Transform piece in selectedTile.gameObject.transform)
                         {
-                            piecesOnBoard.Remove(taken);
-                            takenPieces.Add(taken);
-                            foreach(Transform child in tile.gameObject.transform)
+                            Piece taken = piece.gameObject.GetComponent<Piece>().Move(tile.gameObject.name);
+                            if (taken != null)
                             {
-                                if (child.gameObject.GetComponent<Piece>().Equals(taken))
+                                piecesOnBoard.Remove(taken);
+                                takenPieces.Add(taken);
+                                foreach (Transform child in tile.gameObject.transform)
                                 {
-                                    child.parent = graveyard.transform;
-                                    child.localPosition = new Vector2(0, 0);
+                                    if (child.gameObject.GetComponent<Piece>().Equals(taken))
+                                    {
+                                        child.parent = graveyard.transform;
+                                        child.localPosition = new Vector2(0, 0);
+                                    }
                                 }
                             }
+                            DeselectTile();
                         }
-                        DeselectTile();
+                    }
+                }
+                //Following lines could be simplified:
+                if (selectedTile != null && (tile == null || tile.gameObject.name.Equals(selectedTile.gameObject.name)))
+                {
+                    foreach (Transform piece in selectedTile.gameObject.transform)
+                    {
+                        piece.localPosition = new Vector2(0, 0);
                     }
                 }
             }
-            if (selectedTile != null && (tile == null|| tile.gameObject.name.Equals(selectedTile.gameObject.name)))
-            {
-                foreach (Transform piece in selectedTile.gameObject.transform)
-                {
-                    piece.localPosition = new Vector2(0, 0);
-                }
-            }
-
         }
     }
 
