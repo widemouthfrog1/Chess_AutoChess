@@ -6,6 +6,7 @@ public class Board : MonoBehaviour
 {
 
     public GameObject[][] board;
+    
 
     [SerializeField]
     private int width = 8;
@@ -40,6 +41,9 @@ public class Board : MonoBehaviour
     private Sprite whiteKing = null;
     [SerializeField]
     private Sprite blackKing = null;
+
+    [SerializeField]
+    private GameObject graveyard;
 
     private string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H" };
     private Tile selectedTile = null;
@@ -378,7 +382,20 @@ public class Board : MonoBehaviour
                 {
                     foreach (Transform piece in selectedTile.gameObject.transform)
                     {
-                        piece.gameObject.GetComponent<Piece>().Move(tile.gameObject.name);
+                        Piece taken = piece.gameObject.GetComponent<Piece>().Move(tile.gameObject.name);
+                        if(taken != null)
+                        {
+                            piecesOnBoard.Remove(taken);
+                            takenPieces.Add(taken);
+                            foreach(Transform child in tile.gameObject.transform)
+                            {
+                                if (child.gameObject.GetComponent<Piece>().Equals(taken))
+                                {
+                                    child.parent = graveyard.transform;
+                                    child.localPosition = new Vector2(0, 0);
+                                }
+                            }
+                        }
                         DeselectTile();
                     }
                 }

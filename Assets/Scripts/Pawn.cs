@@ -78,10 +78,16 @@ public class Pawn : Piece
 
         return validMoves;
     }
-    public override void Move(string position)
+    public override Piece Move(string position)
     {
         Debug.Log("Move");
-        base.Move(position);
+        Piece piece = base.Move(position); //Not correct for en passant
         moved = true;
+        return piece;
+    }
+
+    public override int Worth()
+    {
+        return 1;
     }
 }

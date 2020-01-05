@@ -110,6 +110,11 @@ public class Queen : Piece
         return territory;
     }
 
+    public override int Worth()
+    {
+        return 9;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

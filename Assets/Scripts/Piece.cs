@@ -31,9 +31,10 @@ public abstract class Piece : MonoBehaviour
         }
         return validMoves;
     }
-    public virtual void Move(string position)
+    public virtual Piece Move(string position)
     {
         bool positionIsValid = false;
+        Piece piece = null;
         foreach(string p in ValidMoves())
         {
             if (p.Equals(position))
@@ -44,9 +45,15 @@ public abstract class Piece : MonoBehaviour
         if (positionIsValid)
         {
             int i = IndexOf(position[0]);
-            transform.parent = board.board[i][int.Parse("" + position[1]) - 1].transform;
+            Transform parentTransform = board.board[i][int.Parse("" + position[1]) - 1].transform;
+            foreach(Transform child in parentTransform)
+            {
+                piece = child.gameObject.GetComponent<Piece>();
+            }
+            transform.parent = parentTransform;
         }
         transform.localPosition = new Vector3(0, 0, 0);
+        return piece;
     }
     public abstract string Name();
     public void SetBoard(Board board)
@@ -66,5 +73,7 @@ public abstract class Piece : MonoBehaviour
         }
         return i;
     }
+
+    public abstract int Worth();
 
 }

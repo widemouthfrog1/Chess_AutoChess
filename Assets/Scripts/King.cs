@@ -116,6 +116,11 @@ public class King : Piece
         return validMoves;
     }
 
+    public override int Worth()
+    {
+        return 200;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

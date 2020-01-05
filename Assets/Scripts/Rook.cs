@@ -66,6 +66,11 @@ public class Rook : Piece
         return territory;
     }
 
+    public override int Worth()
+    {
+        return 5;
+    }
+
     //TODO: Valid Moves Castle
 
     // Start is called before the first frame update
