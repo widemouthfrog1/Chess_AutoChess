@@ -36,7 +36,7 @@ public class Knight : Piece
             if (tileX + i / 4 + i / 2 - 2 < 0 
                 || tileX + i / 4 + i / 2 - 2 >= letters.Length
                 || tileY + ((i % 2) * 2 - 1) * (i < 3 || i > 5 ? 1 : 2) <= 0
-                || tileY + ((i % 2) * 2 - 1) * (i < 3 || i > 5 ? 1 : 2) >= 8)
+                || tileY + ((i % 2) * 2 - 1) * (i < 3 || i > 5 ? 1 : 2) > 8)
             {
                 continue;
             }
