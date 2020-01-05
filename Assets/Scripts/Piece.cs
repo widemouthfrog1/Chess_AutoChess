@@ -31,7 +31,7 @@ public abstract class Piece : MonoBehaviour
         }
         return validMoves;
     }
-    public void Move(string position)
+    public virtual void Move(string position)
     {
         bool positionIsValid = false;
         foreach(string p in ValidMoves())

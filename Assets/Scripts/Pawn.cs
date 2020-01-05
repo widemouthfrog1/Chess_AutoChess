@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pawn : Piece
 {
+    bool moved = false;
+
     public override string Name()
     {
         return "Pawn";
@@ -58,8 +60,28 @@ public class Pawn : Piece
         if(tile.transform.childCount == 0) //if the tile above the tile this pawn is on is empty
         {
             validMoves.Add(tileName);
+            //Extra move of first turn
+            //Can only happen if no pieces on tile just in front of it
+            Debug.Log(moved);
+            if (!moved)
+            {
+                rowIndex = int.Parse("" + tilePosition[1]) + (color * 2 - 1) * 2; //pawn is never on last row
+                colIndex = IndexOf(tilePosition[0]);
+                tileName = letters[colIndex] + rowIndex;
+                tile = board.GetTile(tileName);
+                if (tile.transform.childCount == 0) //if the tile above the tile this pawn is on is empty
+                {
+                    validMoves.Add(tileName);
+                }
+            }
         }
 
         return validMoves;
+    }
+    public override void Move(string position)
+    {
+        Debug.Log("Move");
+        base.Move(position);
+        moved = true;
     }
 }
