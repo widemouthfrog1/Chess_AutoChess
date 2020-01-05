@@ -24,7 +24,7 @@ public class Pawn : Piece
             territory.Add(letters[leftIndex] + topIndex);
         }
         //TODO: refactor to use general bounds instead of 7
-        if(rightIndex < 7)
+        if(rightIndex < 8)
         {
             territory.Add(letters[rightIndex] + topIndex);
         }
