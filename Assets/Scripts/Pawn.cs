@@ -51,7 +51,7 @@ public class Pawn : Piece
 
         //Moving forward
         string tilePosition = transform.parent.gameObject.name;
-        int rowIndex = int.Parse("" + tilePosition[1]) + 1; //pawn is never on last row
+        int rowIndex = int.Parse("" + tilePosition[1]) + color * 2 - 1; //pawn is never on last row
         int colIndex = IndexOf(tilePosition[0]);
         string tileName = letters[colIndex] + rowIndex;
         tile = board.GetTile(tileName);
